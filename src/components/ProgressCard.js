@@ -11,7 +11,9 @@ const ProgressCard = ({data}) => {
     max-h-[201px]
     flex flex-col
     rounded-[10px]
+   
     px-[28px]
+    relative
     py-[21px]
     bg-white'>
        {/* Progress Header Component */}

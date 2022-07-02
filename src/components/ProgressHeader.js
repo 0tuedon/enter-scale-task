@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MoreOptions from '../assets/svgs/more-vertical.svg'
+import Menu from './Menu';
 const ProgressHeader = ({data}) => {
+  const [active,setMenuActive] =  useState(false);
+
   return (
+    <>
+   
     <div className='flex justify-between'>
     {/* Card header including title and status */}
     <div className='flex gap-x-[15px]'>
@@ -21,13 +26,20 @@ const ProgressHeader = ({data}) => {
         </div>
     </div>
     {/* More Options Point */}
-    <div className='bg-gray1 
+    <div 
+    onClick={()=>{setMenuActive(prev=>!prev)}}
+    
+    className='bg-gray1 
     flex
+    cursor-pointer
      justify-center items-center w-[33px] h-[33px] rounded-[50%]'>
         {/* More Options Svg */}
         <img src={MoreOptions} alt={"More Options"} />
     </div>
     </div>
+{/* Menu Modal */}
+<Menu data={data} idNumber={data?.id}/>
+    </>
   )
 }
 

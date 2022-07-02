@@ -6,7 +6,6 @@ const ProgressSection = ({name,ticketsData}) => {
   return (
     <div className='bg-gray1 
     w-[750px]
-   
     px-[5px] py-[24px]'>
         {/* Tag Name */}
         <h4 className='text-[24px] font-medium'>
@@ -18,7 +17,7 @@ const ProgressSection = ({name,ticketsData}) => {
          thumb-[4px]
          scrollbar
         flex-col gap-y-[20px]'>
-        {ticketsData.map(data=><ProgressCard data={data}/>)}
+        {ticketsData.map(data=><ProgressCard key={data?.id}data={data}/>)}
         </div>
     </div>
   )
