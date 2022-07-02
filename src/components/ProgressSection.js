@@ -1,7 +1,7 @@
 import React from 'react'
 import ProgressCard from './ProgressCard'
 
-const ProgressSection = () => {
+const ProgressSection = ({data}) => {
   return (
     <div className='bg-gray1 
     w-[500px]
@@ -9,7 +9,7 @@ const ProgressSection = () => {
     px-[30px] py-[24px]'>
         {/* Tag Name */}
         <h4 className='text-[24px] font-medium'>
-            All</h4>
+            {data?.name}</h4>
         {/* ProgressCards */}
         <ProgressCard/>
     </div>

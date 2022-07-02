@@ -1,7 +1,7 @@
 import React from 'react'
 import  ReactDOM  from 'react-dom'
 import ProgressForm from './ProgressForm'
-const NewModal = () => {
+const NewModal = ({active,setActive}) => {
   return (
     // Modal
     <div className='
@@ -20,8 +20,13 @@ const NewModal = () => {
         '
         >
             {/* New Ticket text */}
-            <div className='px-[20px] border-b  py-[10px]'>
-            <h4 className='text-[25px] font-bold'>Add New Ticket </h4>
+            <div className='px-[20px] border-b justify-between flex items-center py-[10px]'>
+            <h4 className='text-[25px] font-medium'>Add New Ticket </h4>
+            <p 
+            onClick={()=>{setActive(false)}}
+            className='
+            cursor-pointer
+            font-bold text-[20px]'>Back</p>
             </div>
         {/* Form Component */}
         <ProgressForm/>
@@ -33,6 +38,7 @@ const NewModal = () => {
 }
 
 
-export const Modal = ()=>{
-    return ReactDOM.createPortal(<NewModal/>,document.body)
+export const Modal = ({active,setActive})=>{
+    return ReactDOM.createPortal(<NewModal active={active} 
+        setActive={setActive}/>,document.body)
 }

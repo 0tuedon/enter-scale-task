@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
 import Search from './Search'
 import Add from '../assets/svgs/plus.svg'
 import { Modal } from './NewModal'
 
 const NewTicketLine = () => {
+  // state to manage the modal 
+  const [active,setActive]= useState(false)
   return (
     <div
     className='flex items-center justify-between '
@@ -18,7 +20,7 @@ const NewTicketLine = () => {
         {/* New Ticket Button */}
         <div>
             <Button
-            click={()=>{}}
+            click={()=>{setActive(true)}}
             styles={`
             
             `}
@@ -27,8 +29,11 @@ const NewTicketLine = () => {
              New Ticket
                 </Button>
         </div>
+        {/* conditional rendering for the modal */}
 
-        <Modal/>
+        {active && <Modal 
+        active={active} 
+        setActive={setActive}/>}
     </div>
   )
 }
