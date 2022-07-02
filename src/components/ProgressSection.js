@@ -4,7 +4,7 @@ import ProgressCard from './ProgressCard'
 const ProgressSection = () => {
   return (
     <div className='bg-gray1 
-    w-[669px]
+    w-[500px]
     h-[500px]
     px-[30px] py-[24px]'>
         {/* Tag Name */}

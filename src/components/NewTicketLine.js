@@ -2,6 +2,7 @@ import React from 'react'
 import Button from './Button'
 import Search from './Search'
 import Add from '../assets/svgs/plus.svg'
+import { Modal } from './NewModal'
 
 const NewTicketLine = () => {
   return (
@@ -17,20 +18,17 @@ const NewTicketLine = () => {
         {/* New Ticket Button */}
         <div>
             <Button
+            click={()=>{}}
             styles={`
-            flex items-center 
-            text-[18px] font-semibold
-            text-white
-            px-[10px]
-            justify-center
-            gap-x-[20px]
-            h-[51px] rounded-[10px]
+            
             `}
             >
              <img src={Add}  alt={"Plus Icon"}   />
              New Ticket
                 </Button>
         </div>
+
+        <Modal/>
     </div>
   )
 }
