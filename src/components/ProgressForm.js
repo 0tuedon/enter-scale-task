@@ -2,8 +2,10 @@ import React from "react";
 import Button from "./Button";
 import { useFormik } from "formik";
 import { v4 as uuidv4 } from "uuid";
+import { toast,ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-const ProgressForm = () => {
+const ProgressForm = ({setActive}) => {
   // initial state
   const initialValues = {
     title: "",
@@ -16,6 +18,8 @@ const ProgressForm = () => {
     const tickets = localStorage.getItem("tickets-data");
     const id = uuidv4();
     val.id = id;
+    let date = new Date().toLocaleDateString()
+    val.date = date
     if (tickets) {
       const parsedTickets = JSON.parse(tickets);
       // removing the array
@@ -32,6 +36,10 @@ const ProgressForm = () => {
       const parseVal = JSON.stringify(val);
       localStorage.setItem("tickets-data", parseVal);
     }
+    toast.success("Ticket Created Successfully")
+
+    setTimeout(()=>{setActive(false)},1000)
+   
   };
   const validationSchema = Yup.object({
     title: Yup.string()
@@ -58,6 +66,9 @@ const ProgressForm = () => {
     items-center
     py-[10px]"
     >
+        <ToastContainer
+        autoClose={900}
+        />
       {/* Input */}
       <div className="bg-[] flex flex-col">
         <label>Title</label>

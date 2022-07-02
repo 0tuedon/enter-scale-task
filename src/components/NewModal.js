@@ -29,7 +29,7 @@ const NewModal = ({active,setActive}) => {
             font-bold text-[20px]'>Back</p>
             </div>
         {/* Form Component */}
-        <ProgressForm/>
+        <ProgressForm setActive={setActive}/>
           
         </div>
     

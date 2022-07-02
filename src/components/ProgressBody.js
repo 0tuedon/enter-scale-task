@@ -1,11 +1,12 @@
 import React from 'react'
 
-const ProgressBody = () => {
+const ProgressBody = ({data}) => {
   return (
-    <div className='text-[rgba(0,0,0,0.7)]'>
+    <div className='
+    h-[60%]
+    text-[rgba(0,0,0,0.7)]'>
         <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Nulla tristique sagittis eros a blandit velit. 
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Nulla tristique sagittis eros a blandit velit.
+       {data?.description}
         </p>
     </div>
   )
