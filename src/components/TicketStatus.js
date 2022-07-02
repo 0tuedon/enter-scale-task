@@ -1,8 +1,11 @@
 import React from 'react'
+import ProgressSection from './ProgressSection'
 
 const TicketStatus = () => {
   return (
-    <div>TicketStatus</div>
+    <div className='flex mt-[30px] '>
+        <ProgressSection/>
+    </div>
   )
 }
 
