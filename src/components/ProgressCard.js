@@ -1,10 +1,23 @@
+import { Draggable } from 'react-beautiful-dnd'
 import ProgressBody from './ProgressBody'
 import ProgressFooter from './ProgressFooter'
 import ProgressHeader from './ProgressHeader'
 
 const ProgressCard = ({data}) => {
   return (
-    <div className='
+    <Draggable
+    draggableId={data.id}
+    index={data.id}
+    >
+ {(provided, snapshot) => {
+        return (
+  
+    <div 
+    ref={provided.innerRef}
+            snapshot={snapshot}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+    className='
     min-w-[400px] 
     w-[350px]
     min-h-[200px]
@@ -24,6 +37,9 @@ const ProgressCard = ({data}) => {
        {/* Footer of progress  */}
        <ProgressFooter  data={data}/>
     </div>
+      );
+    }}
+    </Draggable>
   )
 }
 

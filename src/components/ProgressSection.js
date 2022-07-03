@@ -1,9 +1,12 @@
 import React from 'react'
+import { Droppable } from 'react-beautiful-dnd'
 import ProgressCard from './ProgressCard'
 
 const ProgressSection = ({name,ticketsData}) => {
  
   return (
+    <Droppable droppableId={name}>
+      {(provided) => (
     <div className='bg-gray1 
     md:w-[750px]
    w-[350px]
@@ -22,6 +25,8 @@ const ProgressSection = ({name,ticketsData}) => {
         {ticketsData.map(data=><ProgressCard key={data?.id}data={data}/>)}
         </div>
     </div>
+        )}
+    </Droppable>
   )
 }
 
