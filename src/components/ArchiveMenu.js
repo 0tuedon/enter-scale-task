@@ -1,43 +1,8 @@
 import React from 'react'
+import { DeleteFullyId, RestoreId } from '../functions/ArchiveFunc'
 
 const ArchiveMenu = ({ idNumber, data }) => {
-    const RestoreId = (id) => {
-        let archivedDeleted = JSON.parse(localStorage.getItem("archive-deleted")) || []
-        const ticketsData = localStorage.getItem('tickets-data')
-        console.log(archivedDeleted,"archive")
-        if (archivedDeleted) {
-            if (!Array.isArray(archivedDeleted)) {
-            archivedDeleted = [archivedDeleted]
-            }
-            const filter = archivedDeleted.filter(data => data.id !== id)
-            const found = archivedDeleted.find(data => data.id === id)
-            const newData = [
-                ...filter
-            ]
-            localStorage.setItem("tickets-data", JSON.stringify(newData))
-            if (ticketsData) {
-                const parsedTickets = archivedDeleted
-                const passedRestore = localStorage.getItem("passed-restore");
-                if (passedRestore) {
-
-                    const newTickets = JSON.stringify([found, ...parsedTickets]);
-                    localStorage.setItem("tickets-data", newTickets);
-                    localStorage.setItem("archive-deleted",filter)
-                } else {
-                    const newTickets = JSON.stringify([found, ...parsedTickets]);
-                    localStorage.setItem("tickets-data", newTickets);
-                    localStorage.setItem("passed-restore", true);
-                    localStorage.setItem("archive-deleted",filter)
-                }
-            }
-            else {
-                localStorage.setItem("tickets-data", JSON.stringify(found));
-                localStorage.setItem("archive-deleted",filter|| [])
-            }
-            window.location.reload()
-        }
-       
-    }
+  
 
 
     return (
@@ -53,7 +18,7 @@ const ArchiveMenu = ({ idNumber, data }) => {
                     className='hover:bg-enterGreen'
                 >Restore</li>
                 <li
-                    onClick={() => {}}
+                    onClick={() => {DeleteFullyId(idNumber)}}
                     className='hover:bg-enterGreen'> Delete Fully</li>
             </ul>
         </div>
