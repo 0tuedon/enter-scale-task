@@ -13,7 +13,7 @@ export const RestoreId = (id) => {
         ]
         localStorage.setItem("tickets-data", JSON.stringify(newData))
         if (ticketsData) {
-            const parsedTickets = archivedDeleted
+            const parsedTickets = JSON.parse(ticketsData)
             const passedRestore = localStorage.getItem("passed-restore");
             if (passedRestore) {
 

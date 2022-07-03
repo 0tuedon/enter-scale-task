@@ -1,10 +1,7 @@
 import React from 'react'
 import { DeleteFullyId, RestoreId } from '../functions/ArchiveFunc'
 
-const ArchiveMenu = ({ idNumber, data }) => {
-  
-
-
+const ArchiveMenu = ({ idNumber }) => {
     return (
         <div className='absolute w-[110px] h-[80px]
     box
@@ -18,7 +15,7 @@ const ArchiveMenu = ({ idNumber, data }) => {
                     className='hover:bg-enterGreen'
                 >Restore</li>
                 <li
-                    onClick={() => {DeleteFullyId(idNumber)}}
+                    onClick={() => { DeleteFullyId(idNumber) }}
                     className='hover:bg-enterGreen'> Delete Fully</li>
             </ul>
         </div>
