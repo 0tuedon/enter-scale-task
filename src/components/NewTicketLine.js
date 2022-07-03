@@ -3,10 +3,12 @@ import Button from './Button'
 import Search from './Search'
 import Add from '../assets/svgs/plus.svg'
 import { Modal } from './NewModal'
+import { ModalArchive } from './ArchiveModal'
 
 const NewTicketLine = () => {
   // state to manage the modal 
   const [active,setActive]= useState(false)
+  const [archive, setArchive] = useState(false)
   return (
     <div
     className='flex items-center justify-between '
@@ -18,7 +20,17 @@ const NewTicketLine = () => {
           
         </div>
         {/* New Ticket Button */}
-        <div>
+        <div className='flex gap-x-[15px] 
+        
+        '>
+            <button 
+            onClick={()=>{setArchive(true)}}
+            className='text-enterRed
+            font-semibold
+
+            '>
+              Deleted Tickets
+            </button>
             <Button
             click={()=>{setActive(true)}}
             styles={`
@@ -30,7 +42,7 @@ const NewTicketLine = () => {
                 </Button>
         </div>
         {/* conditional rendering for the modal */}
-
+        {archive && <ModalArchive active={archive} setActive={setArchive}/>}
         {active && <Modal 
         active={active} 
         setActive={setActive}/>}

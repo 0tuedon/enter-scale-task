@@ -1,5 +1,4 @@
 import React from 'react'
-import { Status } from '../staticData'
 import ProgressSection from './ProgressSection'
 
 const TicketStatus = () => {
@@ -7,7 +6,7 @@ const TicketStatus = () => {
   if(ticketsData){
    let ticketsCheck = JSON.parse(ticketsData)
     if(Array.isArray(ticketsCheck)){
-      ticketsData = JSON.parse(ticketsData)
+      ticketsData = ticketsCheck
     }
     else{
       ticketsData = [ticketsCheck]
@@ -16,6 +15,7 @@ const TicketStatus = () => {
   else{
     ticketsData = []
   }
+  console.log(ticketsData,"data-ticket")
 
   // logic for inprogress and resolved
   const inProgressFiltered = ticketsData.filter(
