@@ -1,7 +1,6 @@
 import ArchiveHeader from './ArchiveHeader'
 import ProgressBody from './ProgressBody'
 import ProgressFooter from './ProgressFooter'
-import ProgressHeader from './ProgressHeader'
 
 const ArchiveCard = ({data}) => {
   return (
@@ -12,7 +11,7 @@ const ArchiveCard = ({data}) => {
     max-h-[201px]
     flex flex-col
     rounded-[10px]
-   box
+  
     px-[28px]
     relative
     py-[21px]

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ArchiveCard from './ArchiveCard';
-import ProgressForm from './ProgressForm'
 const NewModalArchive = ({ active, setActive }) => {
     // getting all archive
     const ArchiveData = localStorage.getItem('archive-deleted');

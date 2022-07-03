@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import MoreOptions from '../assets/svgs/more-vertical.svg'
 import ArchiveMenu from './ArchiveMenu';
-import Menu from './Menu';
 const ArchiveHeader = ({ data }) => {
     const [active, setMenuActive] = useState(false);
 
@@ -18,12 +17,16 @@ const ArchiveHeader = ({ data }) => {
                     </h4>
                     {/* progress status */}
                     <div className={`
-        bg-[#FBF8B2]
+       ${data?.status.includes('Resolved')&&'bg-[#C0FFC7]'}
+       ${data?.status.includes('Progress')&&'bg-[#FBF8B2]'}
         px-[6px]
         py-[5px]
         rounded-[5px]
         `}>
-                        <p className={`text-[#FFA800]`}>{data?.status}</p>
+                        <p className={`
+                          ${data?.status.includes('Resolved')&&'text-resolved'}
+                          ${data?.status.includes('Progress')&&'text-[#FFA800]'}
+                        `}>{data?.status}</p>
                     </div>
                 </div>
                 {/* More Options Point */}
@@ -38,7 +41,7 @@ const ArchiveHeader = ({ data }) => {
                 </div>
             </div>
             {/* Menu Modal */}
-            <ArchiveMenu data={data} idNumber={data?.id} />
+            {active && <ArchiveMenu data={data} setActive={setMenuActive} idNumber={data?.id} />}
         </>
     )
 }

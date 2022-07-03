@@ -5,7 +5,9 @@ const ProgressSection = ({name,ticketsData}) => {
  
   return (
     <div className='bg-gray1 
-    w-[750px]
+    md:w-[750px]
+   w-[350px]
+    min-w-[300px]
     px-[5px] py-[24px]'>
         {/* Tag Name */}
         <h4 className='text-[24px] font-medium'>

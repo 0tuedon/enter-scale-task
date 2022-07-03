@@ -1,29 +1,33 @@
-
+import {toast} from 'react-toastify'
 export const changeStatus = (id,data) => {
-    const ticketsData = JSON.parse(localStorage.getItem("tickets-data")) || false
+    let ticketsData = JSON.parse(localStorage.getItem("tickets-data")) || false
     if (ticketsData) {
+        if (!Array.isArray(ticketsData)) {
+            ticketsData = [ticketsData]
+            }
+
         const filter = ticketsData.filter(data => data.id !== id)
         const found = ticketsData.find(data => data.id === id)
-
-
+       
         if (data.status === 'In Progress') {
             found.status = "Resolved"
     
             const sendData = [
                 found, ...filter
             ]
+            toast.success("Status Changed")
             localStorage.setItem("tickets-data", JSON.stringify(sendData))
-            window.location.reload()
+            setTimeout(()=>{window.location.reload()},1000)
         }
         else {
-            console.log(found, "found")
             found.status = "In Progress"
             const sendData = [
                 found,
                 ...filter
             ]
             localStorage.setItem("tickets-data", JSON.stringify(sendData))
-            window.location.reload()
+            toast.success("Status Changed")
+            setTimeout(()=>{window.location.reload()},1000)
         }
     }
 }

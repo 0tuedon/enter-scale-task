@@ -11,7 +11,11 @@ const NewTicketLine = () => {
   const [archive, setArchive] = useState(false)
   return (
     <div
-    className='flex items-center justify-between '
+    className='flex 
+    flex-col
+    md:flex-row 
+    gap-y-[10px]
+    md:items-center justify-between'
     >
         {/* Left side of new Ticket line */}
         <div className='flex'>

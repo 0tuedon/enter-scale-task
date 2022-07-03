@@ -38,7 +38,10 @@ const ProgressForm = ({setActive}) => {
     }
     toast.success("Ticket Created Successfully")
 
-    setTimeout(()=>{setActive(false)},1000)
+    setTimeout(()=>{
+      setActive(false);
+      window.location.reload();
+    },1000)
    
   };
   const validationSchema = Yup.object({

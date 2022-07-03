@@ -9,7 +9,8 @@ module.exports = {
         enterGreen:"#0D8F2A",
         grayOpacity:'rgba(0,0,0,0.7)',
         backdrop:'rgba(0,0,0,0.3)',
-        enterRed:"#E03232"
+        enterRed:"#E03232",
+        resolved:'#0D8F2A',
       }
     },
   },
