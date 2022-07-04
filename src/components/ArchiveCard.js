@@ -1,10 +1,12 @@
-import ArchiveHeader from './ArchiveHeader'
-import ProgressBody from './ProgressBody'
-import ProgressFooter from './ProgressFooter'
+import ArchiveHeader from './ArchiveHeader';
+import ProgressBody from './ProgressBody';
+import ProgressFooter from './ProgressFooter';
 
-const ArchiveCard = ({data}) => {
+const ArchiveCard = ({ data }) => {
+  console.log(data,"recoil")
   return (
-    <div className='
+    <div
+      className="
     min-w-[400px] 
     w-[350px]
     min-h-[200px]
@@ -15,16 +17,17 @@ const ArchiveCard = ({data}) => {
     px-[28px]
     relative
     py-[21px]
-    bg-gray1'>
-       {/* Progress Header Component */}
-       <ArchiveHeader data={data}/>
-       {/* Progress body */}
-       <ProgressBody  data={data}/>
+    bg-gray1"
+    >
+      {/* Progress Header Component */}
+      <ArchiveHeader data={data} />
+      {/* Progress body */}
+      <ProgressBody data={data} />
 
-       {/* Footer of progress  */}
-       <ProgressFooter  data={data}/>
+      {/* Footer of progress  */}
+      <ProgressFooter data={data} />
     </div>
-  )
-}
+  );
+};
 
-export default ArchiveCard
+export default ArchiveCard;

@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { RecoilRoot } from 'recoil';
+
 import Home from './pages/Home';
 
 function App() {
   return (
-   <Home/>
+    <RecoilRoot>
+      <Home />
+    </RecoilRoot>
   );
 }
 

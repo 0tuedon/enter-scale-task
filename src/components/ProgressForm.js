@@ -1,68 +1,50 @@
-import React from "react";
-import Button from "./Button";
-import { useFormik } from "formik";
-import { v4 as uuidv4 } from "uuid";
-import { toast,ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import useLocalStorage from "../hooks/useLocalStorage";
-import * as Yup from "yup";
-const ProgressForm = ({setActive}) => {
-  const [ticket,setTickets] = useLocalStorage("tickets-data",[])
-  // initial state
+import React from 'react';
+import { useFormik } from 'formik';
+import { v4 as uuidv4 } from 'uuid';
+import * as Yup from 'yup';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRecoilState } from 'recoil';
+
+import Button from './Button';
+import { ticketState } from '../atoms/ticketState';
+
+const ProgressForm = ({ setActive }) => {
+  const [ticket, setTickets] = useRecoilState(ticketState);
   const initialValues = {
-    title: "",
-    status: "In Progress",
-    description: "",
-    tag: "Minor",
+    title: '',
+    status: 'In Progress',
+    description: '',
+    tag: 'Minor',
   };
-  // submit handler
+
   const submitHandler = (val) => {
     const id = uuidv4();
     val.id = id;
-    let date = new Date().toLocaleDateString()
-    val.date = date
-    const newTicketsHook =  [...ticket,val]
-    setTickets(newTicketsHook)
-    toast.success("Ticket Created Successfully")
+    let date = new Date().toLocaleDateString();
+    val.date = date;
+    const newTicketsHook = [...ticket, val];
+    setTickets(newTicketsHook);
+    toast.success('Ticket Created Successfully');
     setActive(false);
-
-    // setTimeout(()=>{
-    //   window.location.reload();
-    // },1000)
-
-    // if (tickets) {
-    //   const parsedTickets = JSON.parse(tickets);
-    //   // removing the array
-    //   const passedHereOnce = localStorage.getItem("passed");
-    //   if (passedHereOnce) {
-    //     const newTickets = JSON.stringify([val, ...parsedTickets]);
-    //     localStorage.setItem("tickets-data", newTickets);
-    //   } else {
-    //     const newTickets = JSON.stringify([val, parsedTickets]);
-    //     localStorage.setItem("tickets-data", newTickets);
-    //     localStorage.setItem("passed", true);
-    //   }
-    // } else {
-    //   const parseVal = JSON.stringify(val);
-    //   localStorage.setItem("tickets-data", parseVal);
-    // }
-    // 
-   
   };
+
   const validationSchema = Yup.object({
     title: Yup.string()
       .required()
-      .max(25, "Title should not be more than 25 characters"),
+      .max(25, 'Title should not be more than 25 characters'),
     description: Yup.string().required(),
     status: Yup.string().required(),
     tag: Yup.string().required(),
   });
+
   const Formik = useFormik({
     initialValues,
     onSubmit: submitHandler,
     validationSchema,
-    initialErrors: { title: "Error" },
+    initialErrors: { title: 'Error' },
   });
+  
   return (
     <form
       onSubmit={Formik.handleSubmit}
@@ -74,9 +56,7 @@ const ProgressForm = ({setActive}) => {
     items-center
     py-[10px]"
     >
-        <ToastContainer
-        autoClose={900}
-        />
+      <ToastContainer autoClose={900} />
       {/* Input */}
       <div className="bg-[] flex flex-col">
         <label>Title</label>
@@ -90,8 +70,8 @@ const ProgressForm = ({setActive}) => {
             rounded-[10px]
             w-[350px] ${
               Formik.errors.title && Formik.touched.title
-                ? "border-red-600"
-                : "border-gray1"
+                ? 'border-red-600'
+                : 'border-gray1'
             }
             focus:outline-none outline-none`}
         />
@@ -121,8 +101,8 @@ const ProgressForm = ({setActive}) => {
             p-[10px]
             ${
               Formik.errors.description && Formik.touched.description
-                ? "border-red-600"
-                : "border-gray1"
+                ? 'border-red-600'
+                : 'border-gray1'
             }
             rounded-[10px]
             w-[350px] border-gray1 
@@ -154,17 +134,17 @@ const ProgressForm = ({setActive}) => {
             p-[10px]
             ${
               Formik.errors.status && Formik.touched.status
-                ? "border-red-600"
-                : "border-gray1"
+                ? 'border-red-600'
+                : 'border-gray1'
             }
             rounded-[10px]
             w-[350px] border-gray1 
             focus:outline-none outline-none`}
         >
-          <option value={"In Progress"} defaultValue>
+          <option value={'In Progress'} defaultValue>
             In Progress
           </option>
-          <option value={"Resolved"}>Resolved</option>
+          <option value={'Resolved'}>Resolved</option>
         </select>
         {Formik.errors.status && Formik.touched.status && (
           <p
@@ -192,16 +172,16 @@ const ProgressForm = ({setActive}) => {
             w-[350px] border-gray1 
             ${
               Formik.errors.tag && Formik.touched.tag
-                ? "border-red-600"
-                : "border-gray1"
+                ? 'border-red-600'
+                : 'border-gray1'
             }
             focus:outline-none outline-none`}
         >
-          <option value={"Minor"} defaultValue>
+          <option value={'Minor'} defaultValue>
             Minor
           </option>
-          <option value={"Moderate"}>Moderate</option>
-          <option value={"Urgent"}>Urgent</option>
+          <option value={'Moderate'}>Moderate</option>
+          <option value={'Urgent'}>Urgent</option>
         </select>
         {Formik.errors.tag && Formik.touched.tag && (
           <p
@@ -220,7 +200,7 @@ const ProgressForm = ({setActive}) => {
       {/* Submit Button */}
 
       <Button
-        type={"submit"}
+        type={'submit'}
         disabled={!Formik.isValid}
         click={Formik.handleSubmit}
       >

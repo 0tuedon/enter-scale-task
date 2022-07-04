@@ -1,25 +1,20 @@
-import { Draggable } from 'react-beautiful-dnd'
-import ProgressBody from './ProgressBody'
-import ProgressFooter from './ProgressFooter'
-import ProgressHeader from './ProgressHeader'
+import { Draggable } from 'react-beautiful-dnd';
+
+import ProgressBody from './ProgressBody';
+import ProgressFooter from './ProgressFooter';
+import ProgressHeader from './ProgressHeader';
 
 const ProgressCard = ({ data }) => {
-  console.log(data, "test")
   return (
-    <Draggable
-      draggableId={data.id}
-      index={data.id}
-      key={data?.id}
-    >
-      {(provided, snapshot) => {
+    <Draggable draggableId={data.id} index={data.id}>
+      {(provided) => {
+        // console.log('provided: Draggable', provided);
         return (
-
           <div
             ref={provided.innerRef}
-            snapshot={snapshot}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            className='
+            className="
     min-w-[400px] 
     w-[350px]
     min-h-[200px]
@@ -30,7 +25,8 @@ const ProgressCard = ({ data }) => {
     px-[28px]
     relative
     py-[21px]
-    bg-white'>
+    bg-white"
+          >
             {/* Progress Header Component */}
             <ProgressHeader data={data} />
             {/* Progress body */}
@@ -42,7 +38,7 @@ const ProgressCard = ({ data }) => {
         );
       }}
     </Draggable>
-  )
-}
+  );
+};
 
-export default ProgressCard
+export default ProgressCard;

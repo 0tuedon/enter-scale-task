@@ -1,38 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import useLocalStorage from '../hooks/useLocalStorage'
-import { DragDropContext } from 'react-beautiful-dnd'
-import { changeStatus } from '../functions/Tickets'
-import ProgressSection from './ProgressSection'
+import React, { useCallback } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { useRecoilState } from 'recoil';
+
+import ProgressSection from './ProgressSection';
+import { ticketState } from '../atoms/ticketState';
 
 const TicketStatus = () => {
-  const [tickets,setTickets] = useLocalStorage("tickets-data",[])
+  const [ticket, setTickets] = useRecoilState(ticketState);
 
-  useEffect(()=>{},[tickets.length])
-  // logic for inprogress and resolved
-  const inProgressFiltered = tickets.length > 0 && tickets.filter(
-    data => data.status.includes('In Progress')
-  )
-  const resolved = tickets.length > 0 && tickets.filter(
-    data => data.status.includes('Resolved')
-  )
+  const onDragEnd = useCallback(
+    (result) => {
+      if (result.reason === 'DROP') {
+        const theTicket = ticket.findIndex(
+          (item) => item.id === result.draggableId,
+        );
+
+        if (result.destination.droppableId !== 'All') {
+          const newTicket = [
+            ...ticket.slice(0, theTicket),
+            { ...ticket[theTicket], status: result.destination.droppableId },
+            ...ticket.slice(theTicket + 1),
+          ];
+          setTickets(newTicket);
+        }
+      }
+    },
+    [setTickets, ticket],
+  );
+
   return (
-    <div className='flex 
-    overflow-x-scroll
-    scrollbar
-    gap-x-[20px] mt-[30px] '>
-      <DragDropContext onDragEnd={changeStatus}>
-        <ProgressSection
-          name={"All"}
-          ticketsData={tickets} />
-        <ProgressSection name={"In Progress"}
-          ticketsData={inProgressFiltered } />
-        <ProgressSection
-          name={"Resolved"}
-          ticketsData={resolved} />
+    <div className="flex overflow-x-scroll scrollbar gap-x-[20px] mt-[30px]">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <ProgressSection name="All" />
+        <ProgressSection name="In Progress" />
+        <ProgressSection name="Resolved" />
       </DragDropContext>
-
     </div>
-  )
-}
+  );
+};
 
-export default TicketStatus
+export default TicketStatus;
