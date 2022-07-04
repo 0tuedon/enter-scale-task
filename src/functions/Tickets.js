@@ -44,6 +44,7 @@ export const DeleteId = (id) => {
         ]
         localStorage.setItem("tickets-data", JSON.stringify(newData))
         if (deletedTickets) {
+
             const parsedDeleted = JSON.parse(deletedTickets)
             const passedHere = localStorage.getItem("passed-deleted");
             if (passedHere) {
@@ -51,7 +52,7 @@ export const DeleteId = (id) => {
                 const newTickets = JSON.stringify([found, ...parsedDeleted]);
                 localStorage.setItem("archive-deleted", newTickets);
             } else {
-                const newTickets = JSON.stringify([found, parsedDeleted]);
+                const newTickets = JSON.stringify([found, ...parsedDeleted]);
                 localStorage.setItem("archive-deleted", newTickets);
                 localStorage.setItem("passed", true);
             }

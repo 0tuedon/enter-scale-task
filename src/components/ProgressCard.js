@@ -3,21 +3,23 @@ import ProgressBody from './ProgressBody'
 import ProgressFooter from './ProgressFooter'
 import ProgressHeader from './ProgressHeader'
 
-const ProgressCard = ({data}) => {
+const ProgressCard = ({ data }) => {
+  console.log(data, "test")
   return (
     <Draggable
-    draggableId={data.id}
-    index={data.id}
+      draggableId={data.id}
+      index={data.id}
+      key={data?.id}
     >
- {(provided, snapshot) => {
+      {(provided, snapshot) => {
         return (
-  
-    <div 
-    ref={provided.innerRef}
+
+          <div
+            ref={provided.innerRef}
             snapshot={snapshot}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-    className='
+            className='
     min-w-[400px] 
     w-[350px]
     min-h-[200px]
@@ -29,16 +31,16 @@ const ProgressCard = ({data}) => {
     relative
     py-[21px]
     bg-white'>
-       {/* Progress Header Component */}
-       <ProgressHeader data={data}/>
-       {/* Progress body */}
-       <ProgressBody  data={data}/>
+            {/* Progress Header Component */}
+            <ProgressHeader data={data} />
+            {/* Progress body */}
+            <ProgressBody data={data} />
 
-       {/* Footer of progress  */}
-       <ProgressFooter  data={data}/>
-    </div>
-      );
-    }}
+            {/* Footer of progress  */}
+            <ProgressFooter data={data} />
+          </div>
+        );
+      }}
     </Draggable>
   )
 }

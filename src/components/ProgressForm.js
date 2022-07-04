@@ -4,8 +4,10 @@ import { useFormik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useLocalStorage from "../hooks/useLocalStorage";
 import * as Yup from "yup";
 const ProgressForm = ({setActive}) => {
+  const [ticket,setTickets] = useLocalStorage("tickets-data",[])
   // initial state
   const initialValues = {
     title: "",
@@ -15,33 +17,36 @@ const ProgressForm = ({setActive}) => {
   };
   // submit handler
   const submitHandler = (val) => {
-    const tickets = localStorage.getItem("tickets-data");
     const id = uuidv4();
     val.id = id;
     let date = new Date().toLocaleDateString()
     val.date = date
-    if (tickets) {
-      const parsedTickets = JSON.parse(tickets);
-      // removing the array
-      const passedHereOnce = localStorage.getItem("passed");
-      if (passedHereOnce) {
-        const newTickets = JSON.stringify([val, ...parsedTickets]);
-        localStorage.setItem("tickets-data", newTickets);
-      } else {
-        const newTickets = JSON.stringify([val, parsedTickets]);
-        localStorage.setItem("tickets-data", newTickets);
-        localStorage.setItem("passed", true);
-      }
-    } else {
-      const parseVal = JSON.stringify(val);
-      localStorage.setItem("tickets-data", parseVal);
-    }
+    const newTicketsHook =  [...ticket,val]
+    setTickets(newTicketsHook)
     toast.success("Ticket Created Successfully")
+    setActive(false);
 
-    setTimeout(()=>{
-      setActive(false);
-      window.location.reload();
-    },1000)
+    // setTimeout(()=>{
+    //   window.location.reload();
+    // },1000)
+
+    // if (tickets) {
+    //   const parsedTickets = JSON.parse(tickets);
+    //   // removing the array
+    //   const passedHereOnce = localStorage.getItem("passed");
+    //   if (passedHereOnce) {
+    //     const newTickets = JSON.stringify([val, ...parsedTickets]);
+    //     localStorage.setItem("tickets-data", newTickets);
+    //   } else {
+    //     const newTickets = JSON.stringify([val, parsedTickets]);
+    //     localStorage.setItem("tickets-data", newTickets);
+    //     localStorage.setItem("passed", true);
+    //   }
+    // } else {
+    //   const parseVal = JSON.stringify(val);
+    //   localStorage.setItem("tickets-data", parseVal);
+    // }
+    // 
    
   };
   const validationSchema = Yup.object({
