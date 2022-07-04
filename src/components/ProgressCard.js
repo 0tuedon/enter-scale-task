@@ -15,10 +15,12 @@ const ProgressCard = ({ data }) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className="
-    min-w-[400px] 
-    w-[350px]
-    min-h-[200px]
-    max-h-[201px]
+    min-w-[350px] 
+    md:min-w-[400px]
+    md:w-[350px]
+    w-[100%]
+    min-h-[219px]
+    max-h-[250px]
     flex flex-col
     rounded-[10px]
   

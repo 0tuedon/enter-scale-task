@@ -20,8 +20,10 @@ const ProgressSection = ({ name }) => {
             {...provided.droppableProps}
             className="bg-gray1 
           md:w-[750px]
-          w-[350px]
-          min-h-[500px]
+          w-[100%]
+          
+          min-h-[250px]
+          md:min-h-[500px]
           min-w-[300px]
           px-[5px] py-[24px]"
           >
@@ -43,7 +45,7 @@ const ProgressSection = ({ name }) => {
                   <ProgressCard key={data?.id} data={data} />
                 ))}
             </div> </>
-              : <p className='my-auto mx-[10%] mt-[50%]'>
+              : <p className='my-auto mt-[10%] mx-[10%]  md:mx-[10%] md:mt-[50%]'>
               NO Tickets Available here
             </p>}
           </div>

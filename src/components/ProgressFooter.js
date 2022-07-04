@@ -15,16 +15,15 @@ const ProgressFooter = ({ data }) => {
         className={`
         bg-[#FFC0C0] px-[10px] 
         ${data.tag === 'Minor' && 'bg-[#C0F7FF]'}
-            ${data.tag === 'Moderate' && ''}
+            ${data.tag === 'Moderate' && 'bg-[#FBF8B2'}
             ${data.tag === 'Urgent' && 'bg-[#FFC0C0]'}
         py-[5px] rounded-[5px]`}
       >
         <p
           className={`
             ${data.tag === 'Minor' && 'text-[#308D9A]'}
-            ${data.tag === 'Moderate' && ''}
-            ${data.tag === 'Urgent' && 'text-[#FF0000]'}
-            text-[#FF0000]`}
+            ${data.tag === 'Moderate' && 'text-[#FFA800]'}
+            ${data.tag === 'Urgent' && 'text-[#FF0000]'}`}
         >
           {data?.tag}
         </p>
