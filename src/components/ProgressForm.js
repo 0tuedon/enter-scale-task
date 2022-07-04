@@ -68,7 +68,8 @@ const ProgressForm = ({ setActive }) => {
             h-[48px]
             p-[10px]
             rounded-[10px]
-            w-[350px] ${
+            w-[300px]
+            md:w-[350px] ${
               Formik.errors.title && Formik.touched.title
                 ? 'border-red-600'
                 : 'border-gray1'
@@ -105,7 +106,9 @@ const ProgressForm = ({ setActive }) => {
                 : 'border-gray1'
             }
             rounded-[10px]
-            w-[350px] border-gray1 
+            w-[300px]
+            md:w-[350px]
+            border-gray1 
             focus:outline-none outline-none`}
         />
         {Formik.errors.description && Formik.touched.description && (
@@ -138,7 +141,9 @@ const ProgressForm = ({ setActive }) => {
                 : 'border-gray1'
             }
             rounded-[10px]
-            w-[350px] border-gray1 
+            w-[300px]
+            md:w-[350px]
+           
             focus:outline-none outline-none`}
         >
           <option value={'In Progress'} defaultValue>
@@ -169,7 +174,8 @@ const ProgressForm = ({ setActive }) => {
           className={`border-2
             p-[10px]
             rounded-[10px]
-            w-[350px] border-gray1 
+            w-[300px]
+            md:w-[350px] border-gray1 
             ${
               Formik.errors.tag && Formik.touched.tag
                 ? 'border-red-600'

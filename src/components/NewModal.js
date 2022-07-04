@@ -18,14 +18,16 @@ const NewModal = ({ active, setActive }) => {
     >
       {/* The Add New Ticket Form */}
       <div
-        className="w-[600px] h-[500px] 
+        className=" w-[86vw] md:w-[600px] h-[500px] 
         bg-white rounded-[10px]
         overflow-y-scroll
         "
       >
         {/* New Ticket text */}
         <div className="px-[20px] border-b justify-between flex items-center py-[10px]">
-          <h4 className="text-[25px] font-medium">Add New Ticket </h4>
+          <h4 className="
+          text-[20px]
+          md:text-[25px] font-medium">Add New Ticket </h4>
           <p
             onClick={() => {
               setActive(false);

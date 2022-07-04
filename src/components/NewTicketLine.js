@@ -16,12 +16,11 @@ const NewTicketLine = () => {
     flex-col
     md:flex-row 
     gap-y-[10px]
-    md:items-center justify-between"
+    md:items-center justify-end"
     >
       {/* Left side of new Ticket line */}
       <div className="flex">
         {/* Search box */}
-        <Search />
       </div>
       {/* New Ticket Button */}
       <div className="flex gap-x-[15px]">
