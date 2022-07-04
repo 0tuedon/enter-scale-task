@@ -29,7 +29,10 @@ const TicketStatus = () => {
   );
 
   return (
-    <div className="flex overflow-x-scroll scrollbar gap-x-[20px] mt-[30px]">
+    <div className="flex flex-col 
+    md:flex-row overflow-x-scroll 
+    gap-y-[20px]
+    scrollbar gap-x-[20px] mt-[30px]">
       <DragDropContext onDragEnd={onDragEnd}>
         <ProgressSection name="All" />
         <ProgressSection name="In Progress" />

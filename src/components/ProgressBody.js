@@ -4,10 +4,19 @@ const ProgressBody = ({ data }) => {
   return (
     <div
       className="
-    h-[60%]
-    text-[rgba(0,0,0,0.7)]"
+    h-[70%]
+    text-[rgba(0,0,0,0.7)]
+    overflow-y-scroll scrollbar
+    "
     >
-      <p>{data?.description}</p>
+      <p className='
+      w-[100%]
+      max-w-[100%]
+    
+break-words
+      '>
+        {data?.description}</p>
+
     </div>
   );
 };

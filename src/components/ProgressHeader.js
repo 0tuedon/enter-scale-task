@@ -9,8 +9,11 @@ const ProgressHeader = ({ data }) => {
     <>
       <div className="flex justify-between">
         {/* Card header including title and status */}
-        <div className="flex gap-x-[15px]">
-          <h4 className="text-[20px] font-semibold">{data?.title || ''}</h4>
+        <div className="w-[80%] flex flex-col gap-y-[10px]">
+          <h4 title={data?.title || ''} className="text-[20px]
+          w-[90%] 
+          break-words
+          font-semibold ">{data?.title || ''}</h4>
           {/* progress status */}
           <div
             className={`
@@ -19,6 +22,7 @@ const ProgressHeader = ({ data }) => {
         
         px-[6px]
         py-[5px]
+        w-[100px]
         rounded-[5px]
         `}
           >

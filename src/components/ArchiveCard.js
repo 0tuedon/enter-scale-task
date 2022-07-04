@@ -6,16 +6,19 @@ const ArchiveCard = ({ data,setActive }) => {
   return (
     <div
       className="
-    min-w-[400px] 
-    w-[350px]
-    min-h-[200px]
-    max-h-[201px]
-    flex flex-col
-    rounded-[10px]
-  
-    px-[28px]
-    relative
-    py-[21px]
+      mt-[10px]
+      min-w-[350px] 
+      md:min-w-[400px]
+      md:w-[350px]
+      w-[100%]
+      min-h-[219px]
+      max-h-[250px]
+      flex flex-col
+      rounded-[10px]
+    
+      px-[28px]
+      relative
+      py-[21px]
     bg-gray1"
     >
       {/* Progress Header Component */}

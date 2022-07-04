@@ -9,7 +9,7 @@ const ArchiveHeader = ({ data,setActive }) => {
     <>
       <div className="flex justify-between">
         {/* Card header including title and status */}
-        <div className="flex gap-x-[15px]">
+        <div className="flex flex-col gap-y-[10px]">
           <h4
             className="text-[20px] 
         font-semibold
@@ -22,9 +22,10 @@ const ArchiveHeader = ({ data,setActive }) => {
             className={`
        ${data?.status === 'Resolved' && 'bg-[#C0FFC7]'}
        ${data?.status === 'In Progress' && 'bg-[#FBF8B2]'}
-        px-[6px]
-        py-[5px]
-        rounded-[5px]
+       px-[6px]
+       py-[5px]
+       w-[100px]
+       rounded-[5px]
         `}
           >
             <p
