@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MoreOptions from '../assets/svgs/more-vertical.svg';
 import ArchiveMenu from './ArchiveMenu';
 
-const ArchiveHeader = ({ data }) => {
+const ArchiveHeader = ({ data,setActive }) => {
   const [active, setMenuActive] = useState(false);
 
   return (
@@ -55,6 +55,7 @@ const ArchiveHeader = ({ data }) => {
       {active && (
         <ArchiveMenu
           data={data}
+          setModalActive={setActive}
           setActive={setMenuActive}
           idNumber={data?.id}
         />

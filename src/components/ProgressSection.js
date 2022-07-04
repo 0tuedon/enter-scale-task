@@ -9,6 +9,7 @@ const ProgressSection = ({ name }) => {
   const tickets = useRecoilValue(filteredTicketState(name));
 
   return (
+    <>
     <Droppable droppableId={name}>
       {(provided, snapshot) => {
         // console.log('provided: Droppable ', provided);
@@ -20,11 +21,14 @@ const ProgressSection = ({ name }) => {
             className="bg-gray1 
           md:w-[750px]
           w-[350px]
+          min-h-[500px]
           min-w-[300px]
           px-[5px] py-[24px]"
           >
+               <h4 className="text-[24px] font-medium">{name}</h4>
+          {tickets.length > 0 ?  <>
             {/* Tag Name */}
-            <h4 className="text-[24px] font-medium">{name}</h4>
+         
             {/* ProgressCards */}
             <div
               className="flex
@@ -38,11 +42,18 @@ const ProgressSection = ({ name }) => {
                 tickets.map((data) => (
                   <ProgressCard key={data?.id} data={data} />
                 ))}
-            </div>
+            </div> </>
+              : <p className='my-auto mx-[10%] mt-[50%]'>
+              NO Tickets Available here
+            </p>}
           </div>
+       
+     
         );
-      }}
+      }
+      }
     </Droppable>
+    </>
   );
 };
 

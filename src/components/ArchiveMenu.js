@@ -1,7 +1,38 @@
 import React from 'react';
-import { DeleteFullyId, RestoreId } from '../functions/ArchiveFunc';
+import { useRecoilState } from 'recoil';
+import { archiveTicketState, ticketState } from '../atoms/ticketState';
+import { DeleteFullyId, } from '../functions/ArchiveFunc';
 
-const ArchiveMenu = ({ idNumber, setActive }) => {
+const ArchiveMenu = ({ idNumber, setActive,setModalActive }) => {
+
+  const [ticket, setTickets] = useRecoilState(ticketState);
+  const [archiveTickets, setArchiveTickets] =
+useRecoilState(archiveTicketState);
+
+
+// Restore fully 
+const restoreTicket = (id) => {
+console.log(id,"id")
+console.log(archiveTickets,"all archived")
+  const ticketToRestore = archiveTickets.filter((item) => item[0].id === id);
+  const remainingTickets = archiveTickets.filter((item) => item[0].id !== id);
+  console.log(ticketToRestore,"restored")
+  console.log(remainingTickets,"rickets")
+  setArchiveTickets(remainingTickets);
+  const [removedArray] = ticketToRestore
+  setTickets([ ...ticket,...removedArray])
+  setActive(false)
+  setModalActive(false)
+};
+
+// Delete fully 
+const deleteFullyTicket = (id) => {
+
+  const remainingTickets = archiveTickets.filter((item) => item[0].id !== id);
+  setArchiveTickets(remainingTickets);
+  setActive(false)
+  setModalActive(false)
+};
   return (
     <div
       className="absolute w-[110px] h-[80px]
@@ -14,7 +45,7 @@ const ArchiveMenu = ({ idNumber, setActive }) => {
       <ul className="flex justify-center gap-y-[15px] flex-col items-center">
         <li
           onClick={() => {
-            RestoreId(idNumber);
+           restoreTicket(idNumber)
             setActive(false);
           }}
           className="
@@ -30,7 +61,7 @@ const ArchiveMenu = ({ idNumber, setActive }) => {
         </li>
         <li
           onClick={() => {
-            DeleteFullyId(idNumber);
+            deleteFullyTicket(idNumber);
             setActive(false);
           }}
           className="

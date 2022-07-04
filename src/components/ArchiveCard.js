@@ -2,8 +2,7 @@ import ArchiveHeader from './ArchiveHeader';
 import ProgressBody from './ProgressBody';
 import ProgressFooter from './ProgressFooter';
 
-const ArchiveCard = ({ data }) => {
-  console.log(data,"recoil")
+const ArchiveCard = ({ data,setActive }) => {
   return (
     <div
       className="
@@ -20,7 +19,7 @@ const ArchiveCard = ({ data }) => {
     bg-gray1"
     >
       {/* Progress Header Component */}
-      <ArchiveHeader data={data} />
+      <ArchiveHeader setActive={setActive} data={data} />
       {/* Progress body */}
       <ProgressBody data={data} />
 

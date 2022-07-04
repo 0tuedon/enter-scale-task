@@ -7,7 +7,7 @@ import { archiveTicketState } from '../atoms/ticketState';
 
 const NewModalArchive = ({ active, setActive }) => {
   const archiveTickets = useRecoilValue(archiveTicketState);
-console.log(archiveTickets,"archive")
+console.log(active)
   return (
     // Modal
     <div
@@ -43,7 +43,7 @@ console.log(archiveTickets,"archive")
         </div>
         <div className="flex flex-col gap-y-[15px] px-[20px]">
           {archiveTickets.length > 0 &&archiveTickets.map((data) => (
-            <ArchiveCard key={data[0].id} data={data[0]} />
+            <ArchiveCard key={data[0].id} setActive={setActive}  data={data[0]} />
           ))}
         </div>
       </div>

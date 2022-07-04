@@ -1,8 +1,8 @@
 export const RestoreId = (id) => {
-  let archivedDeleted =
-    JSON.parse(localStorage.getItem('archive-deleted')) || [];
+  let archivedDeleted =  localStorage.getItem('archive-deleted')
   const ticketsData = localStorage.getItem('tickets-data');
   if (archivedDeleted) {
+    archivedDeleted = JSON.parse(localStorage.getItem('archive-deleted')) || [];
     if (!Array.isArray(archivedDeleted)) {
       archivedDeleted = [archivedDeleted];
     }
